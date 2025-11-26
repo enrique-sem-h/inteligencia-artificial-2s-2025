@@ -19,7 +19,7 @@ class NewsService {
         
         var urlRequest = URLRequest(url: url.appending(component: "/news?ticker=\(ticker)&order=desc&limit=10&sort=published_utc"))
         urlRequest.httpMethod = "GET"
-        urlRequest.allHTTPHeaderFields = ["Authorizarion": "Bearer \(API_KEY)"]
+        urlRequest.allHTTPHeaderFields = ["Authorization": "Bearer \(API_KEY)"]
         
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error {
