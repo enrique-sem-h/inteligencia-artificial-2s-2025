@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FeelingEnum {
+enum FeelingEnum: String {
     case Positive
     case Neutral
     case Negative
@@ -18,10 +18,18 @@ struct Feeling {
     var percentage: Float
 }
 
-struct News: Identifiable {
+struct News: Identifiable, Decodable {
     var id: String
-    var headline: String;
-    var description: String;
+    var headline: String
+    var description: String
     var date: Date
-    var feeling: Feeling?;
+    var feeling: Feeling?
+    
+    enum CodingKeys: String, CodingKey {
+        case headline = "title"
+        case date = "published_utc"
+        
+        case id
+        case description
+    }
 }

@@ -14,18 +14,35 @@ import SwiftUI
     
     var news: [News] = []
     
-    public func fetchNews() -> Void {
-        news = [
-            News(id: "asdasd", headline: "asdasd", description: "asdawd", date: Date.now),
-            News(id: "2", headline: "asdasd", description: "asdawd", date: Date.now),
-            News(id: "3", headline: "asdasd", description: "asdawd", date: Date.now),
-            News(id: "4", headline: "asdasd", description: "asdawd", date: Date.now)
-        ]
-        
+    public func fetchNews(ticker: String) -> Void {
+        newsService.ticker = ticker
+        news = newsService.getNews()
+        news = classifyNews(news: news)
     }
     
-    public func classifyNews(news: [News]) -> Void {
+    private func classifyNews(news: [News]) -> [News] {
+        guard let model = try? projetoHercules(configuration: .init()) else { return [] }
         
+        do {
+            let classifiedNews: [News] = try news.map { news in
+                var mutableNews = news
+                let output = try model.prediction(text: mutableNews.headline)
+                
+                switch output.label {
+                case "positive":
+                    mutableNews.feeling = Feeling(feeling: .Positive, percentage: 100)
+                case "negative":
+                    mutableNews.feeling = Feeling(feeling: .Negative, percentage: 100)
+                default:
+                    mutableNews.feeling = Feeling(feeling: .Neutral, percentage: 100)
+                }
+                
+                return mutableNews
+            }
+            return classifiedNews
+        } catch {
+            fatalError("Coudn't predict news headlines")
+        }
     }
     
 }

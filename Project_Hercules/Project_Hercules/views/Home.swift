@@ -11,18 +11,12 @@ struct Home: View {
     @State var viewModel = NewsViewModel()
     
     var body: some View {
-        Button {
-            viewModel.fetchNews()
-        } label: {
-            Text("Clique")
-        }
-        
-        ForEach(viewModel.news, id: \.id) { new in
-            Text(new.headline)
-        }
-        
-        
-
+        ScrollView {
+            SearchView(viewModel: $viewModel)
+            if !viewModel.news.isEmpty {
+                
+            }
+        }.disabled(viewModel.news.isEmpty)
     }
 }
 
