@@ -20,7 +20,7 @@ struct SearchView: View {
                     .foregroundColor(.white.opacity(0.6))
                 
                 TextField("Insert a ticker", text: $searchText)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.black)
                     .autocapitalization(.allCharacters)
             }
             .padding()
