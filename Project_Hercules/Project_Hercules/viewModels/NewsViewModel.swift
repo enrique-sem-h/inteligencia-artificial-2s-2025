@@ -16,8 +16,11 @@ import SwiftUI
     
     public func fetchNews(ticker: String) -> Void {
         newsService.ticker = ticker
-        news = newsService.getNews()
-        news = classifyNews(news: news)
+        Task {
+            news = await newsService.getNews()
+            news = classifyNews(news: news)
+        }
+        print(news)
     }
     
     private func classifyNews(news: [News]) -> [News] {

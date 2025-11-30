@@ -32,4 +32,5 @@ struct News: Identifiable, Decodable {
         case id
         case description
     }
+    
 }

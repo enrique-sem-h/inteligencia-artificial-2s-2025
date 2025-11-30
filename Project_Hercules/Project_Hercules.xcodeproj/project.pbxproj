@@ -127,6 +127,8 @@
 /* Begin XCBuildConfiguration section */
 		3170B7052ED6505E00782C13 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 3170B6FE2ED6505C00782C13 /* Project_Hercules */;
+			baseConfigurationReferenceRelativePath = utils/secrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -191,6 +193,8 @@
 		};
 		3170B7062ED6505E00782C13 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 3170B6FE2ED6505C00782C13 /* Project_Hercules */;
+			baseConfigurationReferenceRelativePath = utils/secrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
