@@ -39,7 +39,7 @@ struct Home: View {
                     .padding(.bottom, 30)
                 }
             }
-            .navigationTitle("FlashFeed")
+            .navigationTitle("Hercules")
             .toolbarTitleDisplayMode(.inline)
             .foregroundStyle(.white)
         }

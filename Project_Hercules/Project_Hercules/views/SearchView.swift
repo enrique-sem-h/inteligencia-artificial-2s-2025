@@ -19,7 +19,7 @@ struct SearchView: View {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.white.opacity(0.6))
                 
-                TextField("Insert a ticker or a title", text: $searchText)
+                TextField("Insert a ticker or a news article", text: $searchText)
                     .foregroundStyle(.black)
                     .autocapitalization(.allCharacters)
             }
