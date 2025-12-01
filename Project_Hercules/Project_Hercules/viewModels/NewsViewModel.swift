@@ -14,22 +14,37 @@ import SwiftUI
     
     var news: [News] = []
     
-    public func fetchNews(ticker: String) -> Void {
-        newsService.ticker = ticker
-        Task {
-            news = await newsService.getNews()
-            news = classifyNews(news: news)
+    public func fetchNews(text: String) -> Void {
+        
+        if (text.count > 4) {
+            
+            Task {
+                let newNew = News(id: "FUCK", headline: text, description: text, date: .now)
+            
+                news = classifyNews(news: [newNew])
+            }
+                      
+            
+        } else {
+            newsService.ticker = text
+            Task {
+                news = await newsService.getNews()
+                news = classifyNews(news: news)
+            }
         }
-        print(news)
+        
+        
+    
     }
     
     private func classifyNews(news: [News]) -> [News] {
-        guard let model = try? projetoHercules(configuration: .init()) else { return [] }
-        
+        guard let model = try? projetoHerculesV2(configuration: .init()) else { return [] }
+      
         do {
             let classifiedNews: [News] = try news.map { news in
                 var mutableNews = news
-                let output = try model.prediction(text: mutableNews.headline)
+                print(mutableNews)
+                let output = try model.prediction(text: mutableNews.description)
                 
                 switch output.label {
                 case "positive":

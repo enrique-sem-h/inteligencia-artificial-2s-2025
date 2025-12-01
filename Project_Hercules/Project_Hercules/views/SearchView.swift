@@ -19,7 +19,7 @@ struct SearchView: View {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.white.opacity(0.6))
                 
-                TextField("Insert a ticker", text: $searchText)
+                TextField("Insert a ticker or a title", text: $searchText)
                     .foregroundStyle(.black)
                     .autocapitalization(.allCharacters)
             }
@@ -50,7 +50,7 @@ struct SearchView: View {
         isLoading = true
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            viewModel.fetchNews(ticker: searchText)
+            viewModel.fetchNews(text: searchText)
             isLoading = false
         }
     }

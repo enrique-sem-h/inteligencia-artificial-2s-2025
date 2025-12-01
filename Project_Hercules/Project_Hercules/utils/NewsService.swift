@@ -22,8 +22,7 @@ class NewsService {
         let order = URLQueryItem(name: "order", value: "desc")
         let limit = URLQueryItem(name: "limit", value: "10")
         let sort = URLQueryItem(name: "sort", value: "published_utc")
-        
-        
+                
         
         var urlRequest = URLRequest(url: url.appending(queryItems: [searchItem, order, limit, sort]))
         urlRequest.httpMethod = "GET"
